@@ -1,8 +1,8 @@
-import "../styles/style.css";
-import "../styles/auth.css";
+import '@styles/style.css';
+import '@styles/auth.css';
 
-import logo from "../images/logo.png";
-import { Link } from "react-router-dom";
+import logo from '@images/logo.png';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   return (
@@ -48,7 +48,10 @@ const LoginPage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="images/ic_google.svg" alt="구글 로고 - 구글 간편 로그인" />
+              <img
+                src="images/ic_google.svg"
+                alt="구글 로고 - 구글 간편 로그인"
+              />
             </a>
             <a
               href="https://www.kakaocorp.com/page/"
@@ -64,7 +67,7 @@ const LoginPage = () => {
         </div>
         <div className="auth-toggle">
           <p>판다마켓이 처음이신가요?</p>
-          <Link to={"/signup"}>회원가입</Link>
+          <Link to={'/signup'}>회원가입</Link>
         </div>
       </div>
     </div>

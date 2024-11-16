@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import "../styles/style.css";
-import "../styles/home.css";
-import "../components/Header.css";
-import imgHomeTop from "../images/img_home_top.png";
-import imgHome01 from "../images/img_home_01.png";
-import imgHome02 from "../images/img_home_02.png";
-import imgHome03 from "../images/img_home_03.png";
-import imgHomeBottom from "../images/img_home_bottom.png";
+import { Link } from 'react-router-dom';
+import Header from '@components/Header';
+import '@styles/style.css';
+import '@styles/home.css';
+import '@components/Header.css';
+import imgHomeTop from '@images/img_home_top.png';
+import imgHome01 from '@images/img_home_01.png';
+import imgHome02 from '@images/img_home_02.png';
+import imgHome03 from '@images/img_home_03.png';
+import imgHomeBottom from '@images/img_home_bottom.png';
 
 const HomePage = () => {
   return (
@@ -21,7 +21,7 @@ const HomePage = () => {
                 일상의 모든 물건을 <br className="responsive-break" />
                 거래해 보세요
               </h2>
-              <Link to={"/items"}>구경하러 가기</Link>
+              <Link to={'/items'}>구경하러 가기</Link>
             </div>
             <img src={imgHomeTop} alt="홈페이지 상단 이미지" />
           </div>

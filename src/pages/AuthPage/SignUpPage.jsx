@@ -1,7 +1,7 @@
-import "../styles/style.css";
-import "../styles/auth.css";
+import '@styles/style.css';
+import '@styles/auth.css';
 
-import logo from "../images/logo.png";
+import logo from '@images/logo.png';
 
 const SignUpPage = () => {
   return (
@@ -71,7 +71,10 @@ const SignUpPage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="images/ic_google.svg" alt="구글 로고 - 구글 간편 로그인" />
+              <img
+                src="images/ic_google.svg"
+                alt="구글 로고 - 구글 간편 로그인"
+              />
             </a>
             <a
               href="https://www.kakaocorp.com/page/"

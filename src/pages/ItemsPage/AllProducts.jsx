@@ -1,8 +1,8 @@
-import ProductCard from "./ProductCard";
-import Dropdown from "./Dropdown";
-import "./AllProducts.css";
-import SearchIcon from "../images/ic_search.svg";
-import { Link } from "react-router-dom";
+import ProductCard from '@components/ProductCard';
+import Dropdown from '@components/Dropdown';
+import '@pages/ItemsPage/AllProducts.css';
+import SearchIcon from '@images/ic_search.svg';
+import { Link } from 'react-router-dom';
 
 const AllProducts = ({ products, setOrder }) => {
   return (
@@ -18,7 +18,7 @@ const AllProducts = ({ products, setOrder }) => {
               placeholder="검색할 상품을 입력해주세요"
             />
           </div>
-          <Link to={"/additem"} className="additem-btn">
+          <Link to={'/additem'} className="additem-btn">
             상품 등록하기
           </Link>
           <Dropdown setOrder={setOrder} />

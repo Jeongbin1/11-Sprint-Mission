@@ -1,5 +1,5 @@
-import ProductCard from "./ProductCard";
-import "./BestProducts.css";
+import ProductCard from '../../components/ProductCard';
+import './BestProducts.css';
 
 const BestProducts = ({ products }) => {
   return (

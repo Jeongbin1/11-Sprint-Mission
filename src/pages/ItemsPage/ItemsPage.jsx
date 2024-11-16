@@ -1,11 +1,11 @@
-import { getProducts } from "../api";
-import Header from "../components/Header";
-import BestProducts from "../components/BestProducts";
-import AllProducts from "../components/AllProducts";
-import { useCallback, useEffect, useState } from "react";
+import { getProducts } from '@api';
+import Header from '@components/Header';
+import BestProducts from '@pages/ItemsPage/BestProducts';
+import AllProducts from '@pages/ItemsPage/AllProducts';
+import { useCallback, useEffect, useState } from 'react';
 
 const ItemsPage = () => {
-  const [order, setOrder] = useState("recent");
+  const [order, setOrder] = useState('recent');
   const [products, setProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]);
   const [loadingError, setLoadingError] = useState(null);
@@ -13,7 +13,7 @@ const ItemsPage = () => {
   const loadBestProducts = async () => {
     try {
       setLoadingError(null); // 에러 초기화
-      const bestResult = await getProducts({ order: "favorite" });
+      const bestResult = await getProducts({ order: 'favorite' });
       setBestProducts(bestResult.list.slice(0, 4));
       console.log(bestResult);
     } catch (e) {
