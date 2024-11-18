@@ -15,7 +15,6 @@ const ItemsPage = () => {
       setLoadingError(null); // 에러 초기화
       const bestResult = await getProducts({ order: 'favorite' });
       setBestProducts(bestResult.list.slice(0, 4));
-      console.log(bestResult);
     } catch (e) {
       setLoadingError(e);
     }
