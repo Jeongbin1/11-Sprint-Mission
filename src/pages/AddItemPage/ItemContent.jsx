@@ -10,23 +10,25 @@ const FieldWrapper = styled.div`
 
 const FieldLabel = styled.label`
   display: block;
+  font-weight: ${({ theme }) => theme.text.text2lg.fontWeight.bold};
+  font-size: ${({ theme }) => theme.text.text2lg.fontSize};
+  line-height: 21px;
+  color: ${({ theme }) => theme.colors.gray800};
 `;
 
 const FieldInput = styled.input`
   padding: 16px 24px;
   height: 56px;
-  background: #f3f4f6;
+  background-color: ${({ theme }) => theme.colors.gray100};
   border-radius: 12px;
   border: none;
 
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
+  font-weight: ${({ theme }) => theme.text.textLg.fontWeight.regular};
+  font-size: ${({ theme }) => theme.text.textLg.fontSize};
+  line-height: ${({ theme }) => theme.text.textLg.lineHeight};
 
   &::placeholder {
-    color: #9ca3af;
+    color: ${({ theme }) => theme.colors.gray400};
   }
 `;
 

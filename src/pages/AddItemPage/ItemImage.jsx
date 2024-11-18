@@ -21,18 +21,16 @@ const UploadBtn = styled.button`
   width: 168px;
   height: 168px;
 
-  background: #f3f4f6;
+  background-color: ${({ theme }) => theme.colors.gray100};
   border-radius: 12px;
   border: none;
 
   cursor: pointer;
 
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: #9ca3af;
+  font-weight: ${({ theme }) => theme.text.textLg.fontWeight.regular};
+  font-size: ${({ theme }) => theme.text.textLg.fontSize};
+  line-height: ${({ theme }) => theme.text.textLg.lineHeight};
+  color: ${({ theme }) => theme.colors.gray400};
 `;
 
 const ImagePreview = styled.img`

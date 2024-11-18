@@ -25,33 +25,25 @@ const FormHeader = styled.div`
 `;
 
 const FormTitle = styled.h3`
+  display: flex;
+  align-items: center;
   font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 700;
+  font-weight: ${({ theme }) => theme.text.text2xl.fontWeight.bold};
+  line-height: ${({ theme }) => theme.text.text2xl.lineHeight};
   font-size: 20px;
-  line-height: 24px;
-
-  /* Cool Gray/800 */
-  color: #1f2937;
+  color: ${({ theme }) => theme.colors.gray800};
 `;
 
 const RegisterBtn = styled.button`
   padding: 12px 23px;
-  background: #9ca3af;
+  background-color: ${({ theme }) => theme.colors.gray400};
   border-radius: 8px;
   border: none;
 
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: ${({ theme }) => theme.text.textLg.fontWeight.semibold};
+  font-size: ${({ theme }) => theme.text.textLg.fontSize};
   line-height: 19px;
   color: #ffffff;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 `;
 
 const AddItemPage = () => {
