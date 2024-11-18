@@ -38,7 +38,9 @@ const FieldTextarea = styled(FieldInput).attrs({ as: 'textarea' })`
   resize: none;
 `;
 
-const ItemContent = () => {
+const ItemContent = ({ onRegisterActive }) => {
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState('');
   const [price, setPrice] = useState('');
   const [tags, setTags] = useState([]);
   const [tagInput, setTagInput] = useState('');
@@ -78,13 +80,15 @@ const ItemContent = () => {
     }
   };
 
-  useEffect(() => {
-    console.log('태그 리스트 상태:', tags); // tags 상태가 변경될 때마다 출력
-  }, [tags]);
-
   const handleTagRemove = (tagToRemove) => {
     setTags((prev) => prev.filter((tag) => tag !== tagToRemove));
   };
+
+  useEffect(() => {
+    const isFormValid =
+      productName && productDescription && price && tags.length > 0;
+    onRegisterActive(isFormValid);
+  }, [productName, productDescription, price, tags, onRegisterActive]);
 
   return (
     <>
@@ -99,6 +103,8 @@ const ItemContent = () => {
           id="productName"
           name="productName"
           placeholder="상품명을 입력해주세요"
+          value={productName}
+          onChange={(e) => setProductName(e.target.value)}
           required
         />
       </FieldWrapper>
@@ -108,6 +114,8 @@ const ItemContent = () => {
           id="productDescription"
           name="productDescription"
           placeholder="상품 소개를 입력해주세요"
+          value={productDescription}
+          onChange={(e) => setProductDescription(e.target.value)}
           required
         />
       </FieldWrapper>

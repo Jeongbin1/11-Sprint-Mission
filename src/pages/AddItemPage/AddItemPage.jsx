@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Header from '@components/Header';
 import ItemContent from '@pages/AddItemPage/ItemContent';
+import { useState } from 'react';
 
 const FormContainer = styled.div`
   display: flex;
@@ -36,9 +37,11 @@ const FormTitle = styled.h3`
 
 const RegisterBtn = styled.button`
   padding: 12px 23px;
-  background-color: ${({ theme }) => theme.colors.gray400};
+  background-color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.blue100 : theme.colors.gray400};
   border-radius: 8px;
   border: none;
+  cursor: ${({ isActive }) => (isActive ? 'pointer' : 'default')};
 
   font-weight: ${({ theme }) => theme.text.textLg.fontWeight.semibold};
   font-size: ${({ theme }) => theme.text.textLg.fontSize};
@@ -47,15 +50,21 @@ const RegisterBtn = styled.button`
 `;
 
 const AddItemPage = () => {
+  const [isRegisterActive, setIsRegisterActive] = useState(false);
+
+  const handleButtonActive = (isActive) => {
+    setIsRegisterActive(isActive);
+  };
+
   return (
     <>
       <Header isLogin />
       <FormContainer>
         <FormHeader>
           <FormTitle>상품 등록하기</FormTitle>
-          <RegisterBtn>등록</RegisterBtn>
+          <RegisterBtn isActive={isRegisterActive}>등록</RegisterBtn>
         </FormHeader>
-        <ItemContent />
+        <ItemContent onRegisterActive={handleButtonActive} />
       </FormContainer>
     </>
   );
