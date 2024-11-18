@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ItemImage from '@pages/AddItemPage/ItemImage';
+import { useState } from 'react';
 // import TagBtn from '@pages/AddItemPage/TagBtn';
 
 const FieldWrapper = styled.div`
@@ -38,6 +39,26 @@ const FieldTextarea = styled(FieldInput).attrs({ as: 'textarea' })`
 `;
 
 const ItemContent = () => {
+  const [price, setPrice] = useState('');
+
+  const handlePriceChange = (e) => {
+    let value = e.target.value;
+
+    // 숫자가 아닌 값은 포함하지 않도록
+    if (/[^0-9,]/.test(value)) {
+      return;
+    }
+
+    value = value.replaceAll(',', '');
+    // 모든 값을 지웠을 때
+    if (value === '') {
+      setPrice('');
+    } else {
+      // 유효한 number일 때 천 단위 구분 기호 추가
+      setPrice(Number(value).toLocaleString('ko-KR'));
+    }
+  };
+
   return (
     <>
       <FieldWrapper>
@@ -67,8 +88,11 @@ const ItemContent = () => {
         <FieldLabel htmlFor="productPrice">판매 가격</FieldLabel>
         <FieldInput
           type="text"
+          inputmode="numeric"
           id="productPrice"
           name="productPrice"
+          value={price}
+          onChange={handlePriceChange}
           placeholder="판매 가격을 입력해주세요"
           required
         />
