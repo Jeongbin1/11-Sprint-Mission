@@ -6,7 +6,7 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin: 94px auto 0;
+  margin: 94px auto 70px;
   padding: 0 15px;
 
   @media (min-width: 768px) {

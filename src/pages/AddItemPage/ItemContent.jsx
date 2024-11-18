@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ItemImage from '@pages/AddItemPage/ItemImage';
-import { useState } from 'react';
-// import TagBtn from '@pages/AddItemPage/TagBtn';
+import { useEffect, useState } from 'react';
+import TagList from '@pages/AddItemPage/TagList';
 
 const FieldWrapper = styled.div`
   display: flex;
@@ -40,6 +40,9 @@ const FieldTextarea = styled(FieldInput).attrs({ as: 'textarea' })`
 
 const ItemContent = () => {
   const [price, setPrice] = useState('');
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState('');
+  let debounceTimeout;
 
   const handlePriceChange = (e) => {
     let value = e.target.value;
@@ -57,6 +60,30 @@ const ItemContent = () => {
       // 유효한 number일 때 천 단위 구분 기호 추가
       setPrice(Number(value).toLocaleString('ko-KR'));
     }
+  };
+
+  const handleTagChange = (e) => {
+    setTagInput(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && tagInput.trim() !== '') {
+      e.preventDefault();
+      clearTimeout(debounceTimeout);
+      // 한글 조합형 중복 문제로 디바운스 추가
+      debounceTimeout = setTimeout(() => {
+        setTags((prevTags) => [...prevTags, tagInput.trim()]);
+        setTagInput('');
+      }, 100);
+    }
+  };
+
+  useEffect(() => {
+    console.log('태그 리스트 상태:', tags); // tags 상태가 변경될 때마다 출력
+  }, [tags]);
+
+  const handleTagRemove = (tagToRemove) => {
+    setTags((prev) => prev.filter((tag) => tag !== tagToRemove));
   };
 
   return (
@@ -98,14 +125,18 @@ const ItemContent = () => {
         />
       </FieldWrapper>
       <FieldWrapper>
-        <FieldLabel htmlFor="productTags">판매 가격</FieldLabel>
+        <FieldLabel htmlFor="productTags">태그</FieldLabel>
         <FieldInput
           type="text"
           id="productTags"
           name="productTags"
           placeholder="태그를 입력해주세요"
+          value={tagInput}
+          onChange={handleTagChange}
+          onKeyDown={handleKeyDown}
           required
         />
+        <TagList tags={tags} onRemove={handleTagRemove} />
       </FieldWrapper>
     </>
   );
